@@ -25,8 +25,8 @@ class Bike extends Component {
        console.log("callled did updated",this.state.greet);
    }
    componentWillUnmount() {
-       console.log("khatam");
-   }
+       console.log("component destroyed");
+   } 
 
     render() {
         return(

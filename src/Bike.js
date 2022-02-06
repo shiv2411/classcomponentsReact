@@ -35,6 +35,9 @@ class Bike extends Component {
   }           //gets access to prevstate and props just before the updation of DOM.
 
    componentDidUpdate() {
+   if(!(this.props.bikeName||this.props.bikeModel)){
+       throw new Error('No bike found');
+   }
        console.log("callled did updated",this.state.greet);
        return document.getElementById('currentState').innerHTML = `The current state is ${this.state.greet}`;
    }

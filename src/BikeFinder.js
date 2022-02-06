@@ -1,6 +1,6 @@
-import {React,Component} from 'react';
+import React,{Component} from 'react';
 import Bikes from './Bikes';
-
+import ErrorBoundaries from './ErrorBoundaries';
 const DummyBikes = [
     {sNo: 1, name : 'activa', engine : '125cc'},
     {sNo:2,name : 'pulsar', engine : '220cc'},
@@ -15,6 +15,7 @@ class BikeFinder extends Component {
          searchItems : '',
          filteredBikes : DummyBikes,
      }
+     this.inputFocus = React.createRef();
     }
  
  searchChangeHandler(e) {
@@ -23,6 +24,10 @@ class BikeFinder extends Component {
              searchItems : e.target.value
          }
      });
+ }
+
+ componentDidMount() {
+   this.inputFocus.current.focus();     //ref used to access the DOM element. 
  }
 
 componentDidUpdate(prevProps,prevState) {
@@ -42,8 +47,10 @@ componentDidUpdate(prevProps,prevState) {
     render() {
         return(
             <>
-            <input type ="search" placeholder='Search bike' onChange={this.searchChangeHandler.bind(this)}/>
+            <input type ="search" ref={this.inputFocus} placeholder='Search bike' onChange={this.searchChangeHandler.bind(this)}/>
+            <ErrorBoundaries>
             <Bikes bikes = {this.state.filteredBikes}/>
+            </ErrorBoundaries>
             </>
         )
     }

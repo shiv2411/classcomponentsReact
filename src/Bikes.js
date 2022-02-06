@@ -9,14 +9,16 @@ class Bikes extends Component {
         showBike : true
     }
     }
-    /*
+
  componentDidMount() {
-     console.log("hua mount");
+     console.log(this.props.bikes);
  }
 
  componentDidUpdate(){
-     console.log("hua update");
- } */
+     if(this.props.bikes.length === 0) {
+         throw new Error('No Bikes Found');
+     }
+    }
 
 
     render() {

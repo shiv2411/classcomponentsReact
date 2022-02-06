@@ -23,7 +23,7 @@ class Bikes extends Component {
         const BikesList = (
             <ul>
                 {this.props.bikes.map((bike) => (
-                    <Bike key={bike.sNo} bikeName = {bike.name} bikeModel ={bike.engine} />
+                    <Bike key={bike.sNo} bikeName = {bike.name} bikeModel ={bike.engine} greet = {'Hi'} />
                 ))}
             </ul>
         );
